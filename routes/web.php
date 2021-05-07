@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 use Illuminate\Support\Facades\Route;
 
@@ -34,11 +34,12 @@ Route::redirect('/shop','/contact');
 Route::get('/posts','PostController@index')->name('posts');  //
 
 Route::get('/contact','PageController@index')->name('contact');
+ Route::get('/posts/create', 'PostController@create')->name('posts.create');
 
-Route::get('/posts/{id}',function($id){
-    // $id_post=$id;
-    return view('posts.single')->with('post_id',$id);
-})->where('id','[0-9]+');
+//Route::get('/posts/{id}',function($id){
+//    // $id_post=$id;
+//    return view('posts.single')->with('post_id',$id);
+//})->where('id','[0-9]+');
 
 // $ composer global require laravel/installer
 // $ composer create-project --prefer-dist laravel/laravel:^7.0 aistblog
@@ -64,8 +65,8 @@ Route::post('/comments',function () {
 });
 
 // Das 3(16)
+Route::get('/posts/{id}','PostController@show')->name('posts.show');
 
-Route::get('/posts/{id}','PostController@show')->name('posts.show'); 
 // php artisan storage:link
 // php artisan --help
 // php artisan list
@@ -81,3 +82,12 @@ Route::get('/posts/{id}','PostController@show')->name('posts.show');
 // view-er dasavorel, cantrollerner stexcel, home-i mi tarberak toxnel(3-rd@ toxnel), mnacac@ jnjel, anun@ dnel home,   homeController(public function index, contact us metod), pagesController(about us, contact(avelacnel contact page)), Blog - getallposts metod, search,recent posts,  layouts - saydbar, dashboard verabervum e adminin
 
 // bladener u controllerner
+
+
+ // php artisan make:seeder PostSeeder
+// php artisan make:factory PostFactory --model=Post
+ //php artisan db:seed
+
+
+ // git
+

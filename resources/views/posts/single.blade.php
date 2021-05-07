@@ -2,7 +2,8 @@
 
 @extends('layouts.app')
 @section('content')
-    <h1>{{ $post['title'] }}</h1>
-    <img src="{{ url('images/'.$post['img']) }}" alt="" width="300">
+{{--    <h1>{{ $post['title'] }}</h1>--}}
+    <h1>{{ $post->title }}</h1>
+    <img src="{{ url('/storage/'.$post['img']) }}" alt="" width="300">
     {{-- {{ print_r($post) }} --}}
 @endsection
