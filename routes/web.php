@@ -35,6 +35,8 @@ Route::get('/posts','PostController@index')->name('posts');  //
 
 Route::get('/contact','PageController@index')->name('contact');
  Route::get('/posts/create', 'PostController@create')->name('posts.create');
+Route::post('/posts','PostController@store',['post'=>$_POST]);
+
 
 //Route::get('/posts/{id}',function($id){
 //    // $id_post=$id;
@@ -73,21 +75,13 @@ Route::get('/posts/{id}','PostController@show')->name('posts.show');
 // php artisan make:migration create_photos_table
 // php artisan make:migration create_posts_table
 // php artisan migrate
-// php artisan migrate:fresh  -- petq che
+// php artisan migrate:fresh 
 
 
 
-// pagecontroller - public function contact veradarcni
-
-// view-er dasavorel, cantrollerner stexcel, home-i mi tarberak toxnel(3-rd@ toxnel), mnacac@ jnjel, anun@ dnel home,   homeController(public function index, contact us metod), pagesController(about us, contact(avelacnel contact page)), Blog - getallposts metod, search,recent posts,  layouts - saydbar, dashboard verabervum e adminin
-
-// bladener u controllerner
-
-
+// Das 4(17)
+//  php artisan make:model Post
  // php artisan make:seeder PostSeeder
 // php artisan make:factory PostFactory --model=Post
  //php artisan db:seed
-
-
- // git
 

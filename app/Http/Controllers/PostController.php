@@ -30,6 +30,7 @@ class PostController extends Controller
 //        return view('posts.single',compact('post'));
         // return view('posts.single')->with('post',$post);
         // return view('posts.single',['post'=>$post]);
+// with - erb mi popoxakan en stanum
 //    }
     public function show($id){
         $post= Post::findOrFail($id);
@@ -42,6 +43,15 @@ class PostController extends Controller
     public function create(){
         return view('posts.create');
     }
+
+    public function store(Request $request){
+        $post = new Post();
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+//        $post->title='Hello';
+        $post->save();
+        $posts = Post::all();
+        return view('posts.index',['posts'=>$posts,'success'=>'Succesufully added']);
+    }
 }
 
-// with - erb mi popoxakan en stanum
