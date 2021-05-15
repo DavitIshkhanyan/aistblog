@@ -122,3 +122,9 @@ Route::group(['middleware' => ['role:admin']], function () {
 
 
 // anun@ poxel .env-ic ???
+
+// php artisan make:request StorePostRequest
+
+ // project- @st tarineri, @st categorianeri, latest galery, search, arancin table tags(many to many), category(one to many),
+
+ // nkar(storage); image(input(file)); input(text(value)) - voch lriv

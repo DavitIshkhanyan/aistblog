@@ -1,12 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\UpdatePostRequest;
 use App\Post;
 use Illuminate\Http\Request;
 use App\Services\ImageService;
+
 //use App\Http\Controllers\ImageService;
 //use App\Http\Services\ImageService;
 
+use App\Http\Requests\StorePostRequest;
+
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -38,7 +43,12 @@ class PostController extends Controller
 //    }
     public function show($id){
         $post= Post::findOrFail($id);
-//        print_r($post);
+//        $post= Post::find($id);
+//        while($post == NULL){
+//            $id++;
+//            $post= Post::find($id);
+//        }
+//        return view('posts.index',['post'=>$post,'posts'=>$posts]);
         return view('posts.single',['post'=>$post]);
 //        return view('posts.single')->with('post',$post);
 //        return view('posts.single',['post' =>$post]);
@@ -49,22 +59,29 @@ class PostController extends Controller
         return view('posts.create');
     }
 
-    public function store(Request $request){
-        $post = new Post();
-        $post->title = $request->input('title');
-        $post->body = $request->input('body');
-        $post->image = $request->input('image');
+    public function store(StorePostRequest $request){
+//        $post = new Post();
+//        $post->title = $request->input('title');
+//        $post->body = $request->input('body');
+//        $post->image = $request->input('image');
+//        $request->validate([
+//            'title' => 'required|max:255',
+//            'body' => 'required',
+//        ]);
 //        $post->title='Hello';
 //        $post->image = $request->file('image')->storeAs(
 //         'posts', $post->id.$request->file('image')->getClientOriginalName()
 //        );
+        $data = $request->all();
+        $post = Post::Create($data);
         if($request->file('image')){
             (new ImageService())->saveImage($request->file('image'), $post, 'posts');
         }
-        $post->save();
+//        $post->save();
 //        $posts = Post::all();
 //        return view('posts.index',['posts'=>$posts,'success'=>'Succesufully added']);
-       return redirect()->route('posts');
+//       return redirect()->route('posts');
+       return redirect('/admin_posts');
     }
 
     public function edit($id){
@@ -72,7 +89,7 @@ class PostController extends Controller
         $post=Post::findOrFail($id);
         return view('posts.edit',['post'=>$post]);
     }
-    public function update(Request $request, $id){
+    public function update(UpdatePostRequest $request, $id){
         $post=Post::findOrFail($id);
 //        $data = $request->all();
         // $data = $request->except(['_token','_method']);
@@ -80,10 +97,13 @@ class PostController extends Controller
         //Post::updateOrCreate($data);
         $post-> update([
             'title' => $request->input('title'),
-            'body' => $request->input('body')
+            'body' => $request->input('body'),
+            'image' => $request->input('image')
         ]);
-        return redirect()->route('admin');
+
+//        return redirect()->route('/admin');
 //        return redirect('/posts');
+        return redirect('/admin_posts');
     }
 
     public function destroy($id)
@@ -91,7 +111,7 @@ class PostController extends Controller
 //        $post = posts::find($id);
 //        $post->delete();
         Post::destroy($id);
-        return redirect()->route('admin');
+        return redirect()->route('admin_posts');
     }
 
 }

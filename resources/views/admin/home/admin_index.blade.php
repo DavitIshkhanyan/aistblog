@@ -105,39 +105,39 @@
         <!-- Sales stats -->
         <div class="card">
             <div class="card-header header-elements-inline">
-                <h6 class="card-title">Sales statistics</h6>
-                <div class="header-elements">
-                    <select class="form-control" id="select_date" data-fouc>
-                        <option value="val1">June, 29 - July, 5</option>
-                        <option value="val2">June, 22 - June 28</option>
-                        <option value="val3" selected>June, 15 - June, 21</option>
-                        <option value="val4">June, 8 - June, 14</option>
-                    </select>
-                </div>
+                <h6 class="card-title">Posts</h6>
+{{--                <div class="header-elements">--}}
+{{--                    <select class="form-control" id="select_date" data-fouc>--}}
+{{--                        <option value="val1">June, 29 - July, 5</option>--}}
+{{--                        <option value="val2">June, 22 - June 28</option>--}}
+{{--                        <option value="val3" selected>June, 15 - June, 21</option>--}}
+{{--                        <option value="val4">June, 8 - June, 14</option>--}}
+{{--                    </select>--}}
+{{--                </div>--}}
             </div>
 
             <div class="card-body py-0">
                 <div class="row text-center">
                     <div class="col-4">
                         <div class="mb-3">
-                            <h5 class="font-weight-semibold mb-0">5,689</h5>
-                            <span class="text-muted font-size-sm">new orders</span>
+                            <h5 class="font-weight-semibold mb-0">{{ $post_count }}</h5>
+                            <span class="text-muted font-size-sm">All Posts</span>
                         </div>
                     </div>
 
-                    <div class="col-4">
-                        <div class="mb-3">
-                            <h5 class="font-weight-semibold mb-0">32,568</h5>
-                            <span class="text-muted font-size-sm">this month</span>
-                        </div>
-                    </div>
+{{--                    <div class="col-4">--}}
+{{--                        <div class="mb-3">--}}
+{{--                            <h5 class="font-weight-semibold mb-0">32,568</h5>--}}
+{{--                            <span class="text-muted font-size-sm">this month</span>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-                    <div class="col-4">
-                        <div class="mb-3">
-                            <h5 class="font-weight-semibold mb-0">$23,464</h5>
-                            <span class="text-muted font-size-sm">expected profit</span>
-                        </div>
-                    </div>
+{{--                    <div class="col-4">--}}
+{{--                        <div class="mb-3">--}}
+{{--                            <h5 class="font-weight-semibold mb-0">$23,464</h5>--}}
+{{--                            <span class="text-muted font-size-sm">expected profit</span>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                 </div>
             </div>
 
@@ -260,7 +260,7 @@
                         <div class="media flex-column flex-sm-row mt-0 mb-3">
                             <div class="mr-sm-3 mb-2 mb-sm-0">
                                 <div class="card-img-actions">
-                                    <a href="#">
+                                    <a href="/posts/{{ $posts[$post_count-1]->id }}">
                                         <img src="/admin_assets/global_assets/images/placeholders/placeholder.jpg" class="img-fluid img-preview rounded" alt="">
                                         <span class="card-img-actions-overlay card-img"><i class="icon-play3 icon-2x"></i></span>
                                     </a>
@@ -268,18 +268,15 @@
                             </div>
 
                             <div class="media-body">
-                                <h6 class="media-title"><a href="#">Up unpacked friendly</a></h6>
-                                <ul class="list-inline list-inline-dotted text-muted mb-2">
-                                    <li class="list-inline-item"><i class="icon-book-play mr-2"></i> Video tutorials</li>
-                                </ul>
-                                The him father parish looked has sooner. Attachment frequently terminated son hello...
+                                <h6 class="media-title"><a href="/posts/{{ $posts[$post_count-1]->id }}">{{ $posts[$post_count-1]->title }}</a></h6>
+                                {{ $posts[$post_count-1]->body }}
                             </div>
                         </div>
 
                         <div class="media flex-column flex-sm-row mt-0 mb-3">
                             <div class="mr-sm-3 mb-2 mb-sm-0">
                                 <div class="card-img-actions">
-                                    <a href="#">
+                                    <a href="/posts/{{ $posts[$post_count-2]->id }}">
                                         <img src="/admin_assets/global_assets/images/placeholders/placeholder.jpg" class="img-fluid img-preview rounded" alt="">
                                         <span class="card-img-actions-overlay card-img"><i class="icon-play3 icon-2x"></i></span>
                                     </a>
@@ -287,11 +284,8 @@
                             </div>
 
                             <div class="media-body">
-                                <h6 class="media-title"><a href="#">It allowance prevailed</a></h6>
-                                <ul class="list-inline list-inline-dotted text-muted mb-2">
-                                    <li class="list-inline-item"><i class="icon-book-play mr-2"></i> Video tutorials</li>
-                                </ul>
-                                Alteration literature to or an sympathize mr imprudence. Of is ferrars subject enjoyed...
+                                <h6 class="media-title"><a href="/posts/{{ $posts[$post_count-2]->id }}">{{ $posts[$post_count-2]->title }}</a></h6>
+                                {{ $posts[$post_count-2]->body }}
                             </div>
                         </div>
                     </div>
@@ -300,7 +294,7 @@
                         <div class="media flex-column flex-sm-row mt-0 mb-3">
                             <div class="mr-sm-3 mb-2 mb-sm-0">
                                 <div class="card-img-actions">
-                                    <a href="#">
+                                    <a href="/posts/{{ $posts[$post_count-3]->id }}">
                                         <img src="/admin_assets/global_assets/images/placeholders/placeholder.jpg" class="img-fluid img-preview rounded" alt="">
                                         <span class="card-img-actions-overlay card-img"><i class="icon-play3 icon-2x"></i></span>
                                     </a>
@@ -308,18 +302,15 @@
                             </div>
 
                             <div class="media-body">
-                                <h6 class="media-title"><a href="#">Case read they must</a></h6>
-                                <ul class="list-inline list-inline-dotted text-muted mb-2">
-                                    <li class="list-inline-item"><i class="icon-book-play mr-2"></i> Video tutorials</li>
-                                </ul>
-                                On it differed repeated wandered required in. Then girl neat why yet knew rose spot...
+                                <h6 class="media-title"><a href="/posts/{{ $posts[$post_count-3]->id }}">{{ $posts[$post_count-3]->title }}</a></h6>
+                                {{ $posts[$post_count-3]->body }}
                             </div>
                         </div>
 
                         <div class="media flex-column flex-sm-row mt-0 mb-3">
                             <div class="mr-sm-3 mb-2 mb-sm-0">
                                 <div class="card-img-actions">
-                                    <a href="#">
+                                    <a href="/posts/{{ $posts[$post_count-4]->id }}">
                                         <img src="/admin_assets/global_assets/images/placeholders/placeholder.jpg" class="img-fluid img-preview rounded" alt="">
                                         <span class="card-img-actions-overlay card-img"><i class="icon-play3 icon-2x"></i></span>
                                     </a>
@@ -327,11 +318,8 @@
                             </div>
 
                             <div class="media-body">
-                                <h6 class="media-title"><a href="#">Too carriage attended</a></h6>
-                                <ul class="list-inline list-inline-dotted text-muted mb-2">
-                                    <li class="list-inline-item"><i class="icon-book-play mr-2"></i> FAQ section</li>
-                                </ul>
-                                Marianne or husbands if at stronger ye. Considered is as middletons uncommonly...
+                                <h6 class="media-title"><a href="/posts/{{ $posts[$post_count-4]->id }}">{{ $posts[$post_count-4]->title }}</a></h6>
+                                {{ $posts[$post_count-4]->body }}
                             </div>
                         </div>
                     </div>

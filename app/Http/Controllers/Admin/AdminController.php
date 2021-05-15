@@ -12,8 +12,10 @@ class AdminController extends Controller
     public function index()
     {
         $post_count = Post::all()->count();
+        $posts = Post::all();
         return view('admin.home.admin_index',[
-            'post_count'=>$post_count
+            'post_count'=>$post_count,
+            'posts'=>$posts,
         ]);
     }
     public function posts()
