@@ -43,6 +43,7 @@ html, body {
    align-items: center;
    display: flex;
    justify-content: center;
+    /*flex-wrap: wrap;*/
 }
 
 .position-ref {

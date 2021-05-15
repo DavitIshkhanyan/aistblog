@@ -34,8 +34,8 @@ Route::redirect('/shop','/contact');
 Route::get('/posts','PostController@index')->name('posts');  //
 
 Route::get('/contact','PageController@index')->name('contact');
- Route::get('/posts/create', 'PostController@create')->name('posts.create');
-Route::post('/posts','PostController@store',['post'=>$_POST]);
+// Route::get('/posts/create', 'PostController@create')->name('posts.create');
+//Route::post('/posts','PostController@store',['post'=>$_POST]);
 
 
 //Route::get('/posts/{id}',function($id){
@@ -67,7 +67,7 @@ Route::post('/comments',function () {
 });
 
 // Das 3(16)
-Route::get('/posts/{id}','PostController@show')->name('posts.show');
+//Route::get('/posts/{id}','PostController@show')->name('posts.show');
 
 // php artisan storage:link
 // php artisan --help
@@ -75,8 +75,13 @@ Route::get('/posts/{id}','PostController@show')->name('posts.show');
 // php artisan make:migration create_photos_table
 // php artisan make:migration create_posts_table
 // php artisan migrate
-// php artisan migrate:fresh 
+// php artisan migrate:fresh
 
+
+// pagecontroller - public function contact veradarcni
+
+// view-er dasavorel, cantrollerner stexcel, home-i mi tarberak toxnel(3-rd@ toxnel), mnacac@ jnjel, anun@ dnel home,   homeController(public function index, contact us metod), pagesController(about us, contact(avelacnel contact page)), Blog - getallposts metod, search,recent posts,  layouts - saydbar, dashboard verabervum e adminin
+// bladener u controllerner
 
 
 // Das 4(17)
@@ -85,3 +90,35 @@ Route::get('/posts/{id}','PostController@show')->name('posts.show');
 // php artisan make:factory PostFactory --model=Post
  //php artisan db:seed
 
+//git pull
+
+// Das 5(18)
+// Route::get('/posts/{id}/edit', 'PostController@edit')->name('posts.edit');
+// Route::put('/posts/{id}', 'PostController@update')->name('posts.update');
+// Route::delete('/posts/{id}','PostController@destroy')->name('posts.destroy');
+
+
+// composer require laravel/ui "^2.0"
+ // php artisan ui bootstrap --auth
+// npm install
+// npm run dev
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+// Route::get('/admin', 'HomeController@adminindex')->name('admin.home');
+Route::group(['middleware' => ['role:admin']], function () {
+    Route::get('/admin', 'Admin\AdminController@index');
+//    Route::get('/admin', [App\Http\Controllers\Admin\AdminController::class, 'index']);
+    Route::get('/admin_posts', 'Admin\AdminController@posts')->name('admin_posts');
+    Route::get('/posts/create', 'PostController@create')->name('posts.create');
+    Route::post('/posts','PostController@store',['post'=>$_POST]);
+    Route::get('/posts/{id}/edit', 'PostController@edit')->name('posts.edit');
+    Route::put('/posts/{id}', 'PostController@update')->name('posts.update');
+    Route::delete('/posts/{id}','PostController@destroy')->name('posts.destroy');
+});
+ Route::get('/posts/{id}','PostController@show')->name('posts.show');
+
+
+// anun@ poxel .env-ic ???
