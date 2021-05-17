@@ -111,5 +111,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="myaist" />
+    <orderEntry type="module" module-name="Project" />
   </component>
 </module>
